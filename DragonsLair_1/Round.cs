@@ -19,7 +19,9 @@ namespace DragonsLair_1
 
         public bool IsMatchesFinished()
         {
-            // TODO: Implement this method
+            bool MatchesFinished = false;
+            for (int i = false;) //dont know what to do
+
             return false;
         }
 
