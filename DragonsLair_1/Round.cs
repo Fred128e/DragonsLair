@@ -41,7 +41,17 @@ namespace DragonsLair_1
             List<Team> loosingTeams = new List<Team>();
             foreach(Match match in matches)
             {
-                loosingTeams.Add(match.Winner);
+                //loosingTeams.Add(match.Winner);
+                if(match.FirstOpponent == match.Winner)
+                {
+                    loosingTeams.Add(match.SecondOpponent);
+                }
+
+                else(match.SecondOpponent==match.Winner)
+                {
+                    loosingTeams.Add(match.FirstOpponent);
+                }
+
             }
             return loosingTeams;
         }
