@@ -19,10 +19,16 @@ namespace DragonsLair_1
 
         public bool IsMatchesFinished()
         {
-            //bool MatchesFinished = false;
-            //for (int i = false;) //dont know what to do
+            bool areMatchesFinished = true;
+            foreach(Match match in matches)
+            {
+                if (match.Winner==null)
+                {
+                    areMatchesFinished = false;
+                }
+            }
 
-            return false;
+                return areMatchesFinished;
         }
 
         public List<Team> GetWinningTeams()
