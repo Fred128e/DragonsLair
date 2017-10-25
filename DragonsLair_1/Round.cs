@@ -47,7 +47,7 @@ namespace DragonsLair_1
                     loosingTeams.Add(match.SecondOpponent);
                 }
 
-                else(match.SecondOpponent==match.Winner)
+                else
                 {
                     loosingTeams.Add(match.FirstOpponent);
                 }
