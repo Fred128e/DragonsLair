@@ -19,22 +19,31 @@ namespace DragonsLair_1
 
         public bool IsMatchesFinished()
         {
-            bool MatchesFinished = false;
-            for (int i = false;) //dont know what to do
+            //bool MatchesFinished = false;
+            //for (int i = false;) //dont know what to do
 
             return false;
         }
 
         public List<Team> GetWinningTeams()
         {
-            // TODO: Implement this method
-            return null;
+            List<Team> winningTeams = new List<Team>();
+            foreach(Match match in matches)
+            {
+                winningTeams.Add(match.Winner);
+            }
+
+            return winningTeams;
         }
 
         public List<Team> GetLosingTeams()
         {
-            // TODO: Implement this method
-            return null;
+            List<Team> loosingTeams = new List<Team>();
+            foreach(Match match in matches)
+            {
+                loosingTeams.Add(match.Winner);
+            }
+            return loosingTeams;
         }
     }
 }
