@@ -8,14 +8,19 @@ namespace DragonsLair_1
 
         public void ShowScore(string tournamentName)
         {
-            Tournament t = new Tournament(tournamentName);
-            Round r = new Round();
-            int match = 0;
-            TournamentRepo x = new TournamentRepo();
+            Tournament t = tournamentRepository.GetTournament(tournamentName);
+            int point4winner = 0;
+            foreach() //dont know what to do...
+            {
 
-            t.GetRound(0);
+            }
 
             
+
+            /*
+             * TODO: Calculate for each team how many times they have won
+             * Sort based on number of matches won (descending)
+             */
             Console.WriteLine("Implement this method!");
         }
 
