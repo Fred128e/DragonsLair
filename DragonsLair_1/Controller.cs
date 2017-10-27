@@ -4,24 +4,29 @@ namespace DragonsLair_1
 {
     public class Controller
     {
-        private TournamentRepo tournamentRepository = new TournamentRepo();
+        private TournamentRepo tournamentRepo = new TournamentRepo();
 
         public void ShowScore(string tournamentName)
         {
-            Tournament t = tournamentRepository.GetTournament(tournamentName);
-            int point4winner = 0;
-            foreach() //I dont know what to do...
+            int winnerpoint = 0;
+            Tournament t = tournamentRepo.GetTournament(tournamentName);
+            for(int i = 0; i < t.GetNumberOfRounds();i++)
             {
+                Round currentRound = t.GetRound(i);
+                List<Team> winningTeams = currentRound.GetWinningTeams();
 
+                foreach (Team winningTeam in winningTeams)
+                {
+                    Console.WriteLine(winningTeam.Name);
+                }
             }
 
-            
 
             /*
              * TODO: Calculate for each team how many times they have won
              * Sort based on number of matches won (descending)
              */
-            Console.WriteLine("Implement this method!");
+            //Console.WriteLine("Implement this method!");
         }
 
         public void ScheduleNewRound(string tournamentName, bool printNewMatches = true)
