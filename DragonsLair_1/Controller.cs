@@ -10,7 +10,7 @@ namespace DragonsLair_1
         {
             Tournament t = tournamentRepository.GetTournament(tournamentName);
             int point4winner = 0;
-            foreach() //dont know what to do...
+            foreach() //I dont know what to do...
             {
 
             }
