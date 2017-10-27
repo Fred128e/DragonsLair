@@ -33,8 +33,10 @@ namespace DragonsLair_1
                     {
                         scoreList.Remove(loosingTeam);
                     }
+                    scoreList.Add(loosingTeam,0);
+
                 }
-                
+
             }
 
 
