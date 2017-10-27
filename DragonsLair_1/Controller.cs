@@ -15,11 +15,24 @@ namespace DragonsLair_1
             {
                 Round currentRound = t.GetRound(i);
                 List<Team> winningTeams = currentRound.GetWinningTeams();
-
+                Dictionary<Team,int> scoreList = new Dictionary<Team,int>();
                 foreach (Team winningTeam in winningTeams)
                 {
-                    Console.WriteLine(winningTeam.Name);
-                    
+                    int updateNumber = 1;
+                    if(scoreList.TryGetValue(winningTeam, out int number))
+                    {
+                        updateNumber = number + 1;
+                        scoreList.Remove(winningTeam);
+                    }
+                     scoreList.Add(winningTeam,updateNumber);
+
+                }
+                foreach (Team loosingTeam in winningTeams)
+                {
+                    if(scoreList.TryGetValue(loosingTeam,out int number))
+                    {
+                        scoreList.Remove(loosingTeam);
+                    }
                 }
                 
             }
