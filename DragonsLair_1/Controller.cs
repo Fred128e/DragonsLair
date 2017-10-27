@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DragonsLair_1
 {
@@ -18,8 +19,11 @@ namespace DragonsLair_1
                 foreach (Team winningTeam in winningTeams)
                 {
                     Console.WriteLine(winningTeam.Name);
+                    
                 }
+                
             }
+
 
 
             /*
