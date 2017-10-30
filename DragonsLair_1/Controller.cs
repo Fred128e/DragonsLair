@@ -59,7 +59,36 @@ namespace DragonsLair_1
 
         public void ScheduleNewRound(string tournamentName,bool printNewMatches = true)
         {
-            // Do not implement this method yet
+            Tournament t = tournamentRepo.GetTournament(tournamentName);
+            if(t == null)
+            {
+                Console.WriteLine("Turnering fandtes ikke");
+                return;
+            }
+            int numberOfRounds = t.GetNumberOfRounds();
+
+            List<Team> teams = new List<Team>();
+            Round r = new Round();
+            bool isRoundFinished = r.IsMatchesFinished();
+            if(numberOfRounds == 0)
+            {
+                teams = t.GetTeams();
+            }
+            else
+            {
+                r = t.GetRound(numberOfRounds - 1);
+            }
+
+            if(isRoundFinished)
+            {
+                teams = r.GetWinningTeams();
+                if(teams.Count <= 2)
+                {
+
+                }
+            }
+
+
         }
 
         public void SaveMatch(string tournamentName,int roundNumber,string team1,string team2,string winningTeam)
