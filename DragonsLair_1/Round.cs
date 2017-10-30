@@ -48,7 +48,7 @@ namespace DragonsLair_1
             foreach(Match match in matches)
             {
                 
-                if(match.FirstOpponent == match.Winner)
+                if(match.FirstOpponent.Name == match.Winner.Name)
                 {
                     loosingTeams.Add(match.SecondOpponent);
                 }
