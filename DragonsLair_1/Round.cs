@@ -17,7 +17,7 @@ namespace DragonsLair_1
             return null;
         }
 
-        public bool IsMatchesFinished()
+        public bool IsMatchesFinished() //Bestemmer om kampen er færdig
         {
             bool areMatchesFinished = true;
             foreach(Match match in matches)
@@ -31,7 +31,7 @@ namespace DragonsLair_1
                 return areMatchesFinished;
         }
 
-        public List<Team> GetWinningTeams()
+        public List<Team> GetWinningTeams() // Finder alle vinderne, og putter dem i en liste
         {
             List<Team> winningTeams = new List<Team>();
             foreach(Match match in matches)
@@ -42,7 +42,7 @@ namespace DragonsLair_1
             return winningTeams;
         }
 
-        public List<Team> GetLosingTeams()
+        public List<Team> GetLosingTeams() //Finder alle taberne, og putter dem i en seperart liste
         {
             List<Team> loosingTeams = new List<Team>();
             foreach(Match match in matches)

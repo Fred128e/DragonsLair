@@ -10,7 +10,6 @@ namespace DragonsLair_1
 
         public void ShowScore(string tournamentName)
         {
-            int winnerpoint = 0;
             Tournament t = tournamentRepo.GetTournament(tournamentName);
             if(t == null)
             {
@@ -39,7 +38,7 @@ namespace DragonsLair_1
             }
             Console.WriteLine();
             Console.WriteLine("Status in round ");
-            //sort scorelist ?!?
+            //sort scorelist 
             var sortedList = scoreList.OrderByDescending(x => x.Value);
             
             foreach(var key in sortedList)
@@ -93,7 +92,8 @@ namespace DragonsLair_1
 
         public void SaveMatch(string tournamentName,int roundNumber,string team1,string team2,string winningTeam)
         {
-            // Do not implement this method yet
+            
+
         }
     }
 }
