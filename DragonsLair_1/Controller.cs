@@ -127,7 +127,7 @@ namespace DragonsLair_1
             //bool isRoundFinished = r.IsMatchesFinished();
             //for(int i = 0;i < numberOfRounds;i++)
             //{
-            //    if(i==0)
+            //    if(i == 0)
             //    {
             //        t.GetRound(i);
             //        teams = t.GetTeams();
