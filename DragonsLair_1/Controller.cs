@@ -58,34 +58,115 @@ namespace DragonsLair_1
 
         public void ScheduleNewRound(string tournamentName,bool printNewMatches = true)
         {
-            Tournament t = tournamentRepo.GetTournament(tournamentName);
-            if(t == null)
+            
             {
-                Console.WriteLine("Turnering fandtes ikke");
-                return;
-            }
-            int numberOfRounds = t.GetNumberOfRounds();
+                Tournament tournament = tournamentRepo.GetTournament(tournamentName);
 
-            List<Team> teams = new List<Team>();
-            Round r = new Round();
-            bool isRoundFinished = r.IsMatchesFinished();
-            if(numberOfRounds == 0)
-            {
-                teams = t.GetTeams();
-            }
-            else
-            {
-                r = t.GetRound(numberOfRounds - 1);
-            }
+                int numberOfRound = tournament.GetNumberOfRounds();
+                if(numberOfRound == 0)
 
-            if(isRoundFinished)
-            {
-                teams = r.GetWinningTeams();
-                if(teams.Count <= 2)
                 {
-
+                    List<Team> teams = tournament.GetTeams();
                 }
+                else
+                {
+                    Round lastRound = tournament.GetRound(numberOfRound - 1);
+                    bool isRoundFinished = lastRound.IsMatchesFinished();
+                    if(isRoundFinished)
+                    {
+                        List<Team> teams = lastRound.GetWinningTeams();
+                        if(teams.Count >= 2)
+                        {
+                            teams = ShuffleList(teams); // iFixit later
+                            Round newRound = new Round();
+                            if(teams.Count % 2 == 1) // If uneven number of teams
+                            {
+                                Team oldFreeRider = lastRound.GetFreeRider(); // Fix later
+                                Team newFreeRider = teams[0];
+                                while(newFreeRider == oldFreeRider)
+                                {
+                                    newFreeRider = teams[1];
+                                }
+                                teams.Remove(newFreeRider);
+                                newRound.Add(newFreeRider);
+                            }
+                            while(teams.Count > 0) // Så længe der er én eller flere hold i teams listen
+                            {
+                                Match match = new Match();
+                                match.FirstOpponent = teams[0];
+                                teams.RemoveAt(0);
+                                match.SecondOpponent = teams[0];
+                                teams.RemoveAt(0);
+                                newRound.AddMatch(match);
+                            }
+                            tournament.Add(newRound);
+                        }
+                        else
+                        {
+                            tournament.SetStatus("finished");//SetSatus metode fix later
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Round is not finished");
+                    }
+                }
+
             }
+
+            //Tournament t = tournamentRepo.GetTournament(tournamentName);
+            //if(t == null)
+            //{
+            //    Console.WriteLine("Turnering fandtes ikke");
+            //    return;
+            //}
+            //int numberOfRounds = t.GetNumberOfRounds();
+
+            //List<Team> teams = new List<Team>();
+            //Round r = new Round();
+            //bool isRoundFinished = r.IsMatchesFinished();
+            //for(int i = 0;i < numberOfRounds;i++)
+            //{
+            //    if(i==0)
+            //    {
+            //        t.GetRound(i);
+            //        teams = t.GetTeams();
+            //    }
+            //    if(isRoundFinished)
+            //    {
+            //        teams = r.GetWinningTeams();
+            //        Random rnd = new Random();
+            //        if(teams.Count >= 2)
+            //        {
+            //            var result = teams.OrderBy(team => rnd.Next());
+            //        }
+            //    }
+            //}
+
+            //////List<Team> teams = new List<Team>();
+            //Round r = new Round();
+            //bool isRoundFinished = r.IsMatchesFinished();
+            //if(numberOfRounds == 3)
+            //{
+            //    //teams = t.GetTeams();
+            //    r = t.GetRound(numberOfRounds - 1);
+
+            //}
+            //else
+            //{
+            //    r = t.GetRound(numberOfRounds - 1);
+
+            //}
+
+            //if(isRoundFinished)
+            //{
+            //    teams = r.GetWinningTeams();
+            //    Random rnd = new Random();
+            //    if(teams.Count >= 2)
+            //    {
+            //        var result = teams.OrderBy(team => rnd.Next());
+            //    }
+            //}
 
 
         }
